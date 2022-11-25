@@ -228,7 +228,7 @@ def collect_playoff_results(team, dataframe):
         if team_pd.loc[max_match_number, 'advances'] == team:
             result = 'Champion'
         else:
-            result = 'Final'
+            result = 'Second_place'
     elif max_match_number == 15:
         if team_pd.loc[max_match_number, 'advances'] == team:
             result = 'Third_place'
