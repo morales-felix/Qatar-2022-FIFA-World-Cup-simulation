@@ -138,7 +138,7 @@ def simulate_group_stage(games, teams, ternary=True):
         # If game was played, maintain team Elo ratings
         if game['result_home'] == "":
             
-            game['result_home'] = simulate_game(game, ternary)
+            game['result_home'] = simulate_group_stage_game(game, ternary)
             
             # Elo shift based on K
             shift = K*(game['result_home'] - game['elo_prob_home'])
