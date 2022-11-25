@@ -5,9 +5,9 @@ As a fun project that can develop some code for an upcoming personal project, I 
 It is heavily based upon Elo ratings found on eloratings.net as a measure of relative team strength and to update such measure as each simulated game is played.  
 Code to implement the Elo rating system is based on FiveThirtyEight's NFL forecasting game (https://github.com/tulachin/nfl-elo-game).
 
-Notes on Elo implementation:
--Per eloratings.net, the K constant is set to 60 as this is a World Cup competition.
--I did not simulate scorelines. Rather, I simply used probabilities to decide whether a team would win, tie, or lose.
--Probabilities given by the Elo rating system are binary. I came up with a workaround to convert them to ternary probabilities given that association football (a.k.a. soccer) admits three outcomes after a match (win, tie, lose).
--I'll be happy to talk about the workaround, but I wouldn't take it as gospel. There might be ways to do this, but I did not research it. Wanted to have fun, not produce an academic-paper-worthy method, nor a sellable product.
+Notes on Elo implementation:  
+-Per eloratings.net, the K constant is set to 60 as this is a World Cup competition.  
+-I did not simulate scorelines. Rather, I simply used probabilities to decide whether a team would win, tie, or lose.  
+-Probabilities given by the Elo rating system are binary. I came up with a workaround to convert them to ternary probabilities given that association football (a.k.a. soccer) admits three outcomes after a match (win, tie, lose).  
+-I'll be happy to talk about the workaround, but I wouldn't take it as gospel. There might be ways to do this, but I did not research it. Wanted to have fun, not produce an academic-paper-worthy method, nor a sellable product.  
 -In the end, results aren't that different from other more publicized methods. Brazil is a strong team... always.
