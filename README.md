@@ -2,7 +2,7 @@
 
 As a fun project that can develop some code for an upcoming personal project, I undertook this simulation to fill out some World Cup bracket challenges.
 
-It is heavily based upon Elo ratings found on https://eloratings.net as a measure of relative team strength and to update such measure as each simulated game is played.  
+It is heavily based upon Elo ratings found on https://eloratings.net as a measure of relative team strength and to update this team strength measure every time a simulated game is played.  
 Code to implement the Elo rating system is based on FiveThirtyEight's NFL forecasting game (https://github.com/tulachin/nfl-elo-game).
 
 Notes on Elo implementation:  
