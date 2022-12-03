@@ -15,26 +15,26 @@ G,13,Switzerland,Cameroon,,1
 H,14,Uruguay,South Korea,,0.5
 H,15,Portugal,Ghana,,1
 G,16,Brazil,Serbia,,1
-B,17,Wales,Iran,,
-A,18,Qatar,Senegal,,
-A,19,Netherlands,Ecuador,,
-B,20,England,United States,,
-D,21,Tunisia,Australia,,
-C,22,Poland,Saudi Arabia,,
-D,23,France,Denmark,,
-C,24,Argentina,Mexico,,
-E,25,Japan,Costa Rica,,
-F,26,Belgium,Morocco,,
-F,27,Croatia,Canada,,
-E,28,Spain,Germany,,
-G,29,Cameroon,Serbia,,
-H,30,South Korea,Ghana,,
-G,31,Brazil,Switzerland,,
-H,32,Portugal,Uruguay,,
-A,33,Netherlands,Qatar,,
-A,34,Ecuador,Senegal,,
-B,35,Wales,England,,
-B,36,Iran,United States,,
+B,17,Wales,Iran,,0
+A,18,Qatar,Senegal,,0
+A,19,Netherlands,Ecuador,,0.5
+B,20,England,United States,,0.5
+D,21,Tunisia,Australia,,0
+C,22,Poland,Saudi Arabia,,1
+D,23,France,Denmark,,1
+C,24,Argentina,Mexico,,1
+E,25,Japan,Costa Rica,,0
+F,26,Belgium,Morocco,,0
+F,27,Croatia,Canada,,1
+E,28,Spain,Germany,,0.5
+G,29,Cameroon,Serbia,,0.5
+H,30,South Korea,Ghana,,0
+G,31,Brazil,Switzerland,,1
+H,32,Portugal,Uruguay,,1
+A,33,Netherlands,Qatar,,1
+A,34,Ecuador,Senegal,,0
+B,35,Wales,England,,0
+B,36,Iran,United States,,0
 D,37,Australia,Denmark,,
 D,38,Tunisia,France,,
 C,39,Poland,Argentina,,

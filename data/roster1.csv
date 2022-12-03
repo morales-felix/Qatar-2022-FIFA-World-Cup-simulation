@@ -1,33 +1,33 @@
 group,team,rating,points
-G,Brazil,2185,3
-C,Argentina,2086,0
-E,Spain,2068,3
-A,Netherlands,2050,3
-F,Belgium,2020,3
-H,Portugal,2010,3
-D,France,2022,3
-D,Denmark,1952,1
-E,Germany,1919,0
-H,Uruguay,1924,1
-F,Croatia,1914,1
-B,England,1957,3
-G,Switzerland,1911,3
-G,Serbia,1882,0
-A,Ecuador,1871,3
-C,Poland,1814,1
-C,Mexico,1809,1
-B,United States,1797,1
-B,Iran,1760,0
-B,Wales,1791,1
-E,Japan,1831,3
-H,South Korea,1798,1
-F,Canada,1763,0
-F,Morocco,1779,1
-E,Costa Rica,1723,0
-D,Australia,1702,0
-D,Tunisia,1726,1
-A,Senegal,1677,0
-A,Qatar,1642,0
-C,Saudi Arabia,1692,3
-G,Cameroon,1601,0
-H,Ghana,1563,0
+G,Brazil,2195,6
+C,Argentina,2101,3
+E,Spain,2056,4
+A,Netherlands,2047,7
+D,France,2046,6
+F,Belgium,1948,3
+H,Portugal,2044,6
+B,England,1969,7
+D,Denmark,1928,1
+H,Uruguay,1890,1
+E,Germany,1931,1
+F,Croatia,1945,4
+G,Switzerland,1901,3
+G,Serbia,1862,1
+A,Ecuador,1842,4
+E,Japan,1792,3
+C,Poland,1844,4
+C,Mexico,1794,1
+H,South Korea,1750,1
+B,United States,1840,5
+B,Wales,1717,1
+F,Morocco,1851,4
+F,Canada,1732,0
+B,Iran,1779,3
+D,Tunisia,1694,1
+E,Costa Rica,1762,3
+D,Australia,1734,3
+C,Saudi Arabia,1662,3
+A,Senegal,1773,6
+A,Qatar,1578,0
+G,Cameroon,1621,1
+H,Ghana,1611,3
