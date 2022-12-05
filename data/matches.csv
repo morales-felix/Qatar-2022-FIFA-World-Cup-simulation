@@ -1,40 +1,40 @@
 group,date,home_team,away_team,elo_prob_home,result_home
-A,1,Qatar,Ecuador,,0
-B,2,England,Iran,,1
-A,3,Senegal,Netherlands,,0
-B,4,United States,Wales,,0.5
-C,5,Argentina,Saudi Arabia,,0
-D,6,Denmark,Tunisia,,0.5
-C,7,Mexico,Poland,,0.5
-D,8,France,Australia,,1
-F,9,Morocco,Croatia,,0.5
-E,10,Germany,Japan,,0
-E,11,Spain,Costa Rica,,1
-F,12,Belgium,Canada,,1
-G,13,Switzerland,Cameroon,,1
-H,14,Uruguay,South Korea,,0.5
-H,15,Portugal,Ghana,,1
-G,16,Brazil,Serbia,,1
-B,17,Wales,Iran,,0
-A,18,Qatar,Senegal,,0
-A,19,Netherlands,Ecuador,,0.5
-B,20,England,United States,,0.5
-D,21,Tunisia,Australia,,0
-C,22,Poland,Saudi Arabia,,1
-D,23,France,Denmark,,1
-C,24,Argentina,Mexico,,1
-E,25,Japan,Costa Rica,,0
-F,26,Belgium,Morocco,,0
-F,27,Croatia,Canada,,1
-E,28,Spain,Germany,,0.5
-G,29,Cameroon,Serbia,,0.5
-H,30,South Korea,Ghana,,0
-G,31,Brazil,Switzerland,,1
-H,32,Portugal,Uruguay,,1
-A,33,Netherlands,Qatar,,1
-A,34,Ecuador,Senegal,,0
-B,35,Wales,England,,0
-B,36,Iran,United States,,0
+A,1,Qatar,Ecuador,,
+B,2,England,Iran,,
+A,3,Senegal,Netherlands,,
+B,4,United States,Wales,,
+C,5,Argentina,Saudi Arabia,,
+D,6,Denmark,Tunisia,,
+C,7,Mexico,Poland,,
+D,8,France,Australia,,
+F,9,Morocco,Croatia,,
+E,10,Germany,Japan,,
+E,11,Spain,Costa Rica,,
+F,12,Belgium,Canada,,
+G,13,Switzerland,Cameroon,,
+H,14,Uruguay,South Korea,,
+H,15,Portugal,Ghana,,
+G,16,Brazil,Serbia,,
+B,17,Wales,Iran,,
+A,18,Qatar,Senegal,,
+A,19,Netherlands,Ecuador,,
+B,20,England,United States,,
+D,21,Tunisia,Australia,,
+C,22,Poland,Saudi Arabia,,
+D,23,France,Denmark,,
+C,24,Argentina,Mexico,,
+E,25,Japan,Costa Rica,,
+F,26,Belgium,Morocco,,
+F,27,Croatia,Canada,,
+E,28,Spain,Germany,,
+G,29,Cameroon,Serbia,,
+H,30,South Korea,Ghana,,
+G,31,Brazil,Switzerland,,
+H,32,Portugal,Uruguay,,
+A,33,Netherlands,Qatar,,
+A,34,Ecuador,Senegal,,
+B,35,Wales,England,,
+B,36,Iran,United States,,
 D,37,Australia,Denmark,,
 D,38,Tunisia,France,,
 C,39,Poland,Argentina,,

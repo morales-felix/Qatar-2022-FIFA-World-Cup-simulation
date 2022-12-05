@@ -119,18 +119,12 @@ def simulate_playoff_game(game, ternary=True):
     
 
 def simulate_group_stage(games, teams, ternary=True):
-    
-    HFA = 100.0
-    K = 60.0
         
     for game in games:
         team1, team2 = teams[game['home_team']], teams[game['away_team']]
         
-        # Elo difference includes home field advantage
-        if team1['name'] == "Qatar" or team2['name'] == "Qatar":
-            elo_diff = team1['rating'] - team2['rating'] + HFA
-        else:
-            elo_diff = team1['rating'] - team2['rating']
+        # Home field advantage is BS
+        elo_diff = team1['rating'] - team2['rating']
 
         # This is the most important piece, where we set my_prob1 to our forecasted probability
         game['elo_prob_home'] = 1.0 / (math.pow(10.0, (-elo_diff/400.0)) + 1.0)
@@ -141,7 +135,7 @@ def simulate_group_stage(games, teams, ternary=True):
             game['result_home'] = simulate_group_stage_game(game, ternary)
             
             # Elo shift based on K
-            shift = K*(game['result_home'] - game['elo_prob_home'])
+            shift = 60.0*(game['result_home'] - game['elo_prob_home'])
 
             # Apply shift
             team1['rating'] += shift
@@ -161,17 +155,11 @@ def simulate_group_stage(games, teams, ternary=True):
                 
 def simulate_playoffs(games, teams, ternary=True):
     
-    HFA = 100.0
-    K = 60.0
-    
     for game in games:
         team1, team2 = teams[game['home_team']], teams[game['away_team']]
         
-        # Elo difference includes home field advantage
-        if team1['name'] == "Qatar" or team2['name'] == "Qatar":
-            elo_diff = team1['rating'] - team2['rating'] + HFA
-        else:
-            elo_diff = team1['rating'] - team2['rating']
+        # Home field advantage is B.S. in modern soccer
+        elo_diff = team1['rating'] - team2['rating']
 
         # This is the most important piece
         game['elo_prob_home'] = 1.0 / (math.pow(10.0, (-elo_diff/400.0)) + 1.0)
@@ -182,7 +170,7 @@ def simulate_playoffs(games, teams, ternary=True):
             game['advances'], game['loses'], game['result_home'], game['penalties'] = simulate_playoff_game(game, ternary)
             
             # Elo shift based on K
-            shift = K*(game['result_home'] - game['elo_prob_home'])
+            shift = 60.0*(game['result_home'] - game['elo_prob_home'])
 
             # Apply shift
             team1['rating'] += shift
