@@ -12,4 +12,4 @@ Notes on Elo implementation:
 -I'll be happy to talk about the workaround, but I wouldn't take it as gospel. There might be ways to do this, but I did not research it. Wanted to have fun, not produce an academic-paper-worthy method, nor a sellable product.  
 -In the end, results aren't that different from other more publicized methods. Brazil is a strong team... always.
 
-LEARNINGS: I should have put my money where my model was, and bet for ARGENTINA!!! It was predicting, with a bit of a narrow marging, that Argentina would win the World Cup. It did so when I simulated the playoffs (i.e. not at the very beginning of the competition), which I did to get points in a bracket I played at work. Dang!!!
+LEARNINGS: I should have put my money where my model was, and bet for ARGENTINA!!! It was predicting, narrowly, that Argentina would win the World Cup. It did so when I simulated the playoffs (i.e. not at the very beginning of the competition), which I did to get points in a bracket I played at work. Dang!!!
