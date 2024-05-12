@@ -19,13 +19,11 @@ Notes on Elo implementation:
 
 ### Prerequisites  
 
-You need to have Python and pip installed on your system. You can download Python from the official website and pip is included in the Python installation. However, I recommend using the Anaconda distribution of Python which includes pip and other useful tools.  
+You need to have Python and pip installed on your system. You can download Python from the official website and pip is included in the Python installation. 
 
 ### Installation  
 
 1. Clone the repository to your local machine.  
 2. Navigate to the project directory.  
-3. Create a fresh conda environment, and run the following:  
+3. Create a fresh environment, and run the following:  
 `pip install -r requirements.txt`  
-
-If you run into any issues with the installation, try deleting Windows-specific packages from the `requirements.txt` file.
