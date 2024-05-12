@@ -4,7 +4,8 @@
 
 > Want to actually play with the Jupyter notebook? Click [here](https://github.com/morales-felix/Qatar-2022-FIFA-World-Cup-simulation/tree/master) to clone the repository and run the notebook on your local machine.
 
-Needless to say, I am a soccer fan (not too crazy though... As I continue to live on this Earth, I realize that fandom isn't a static thing). So this was a fun project which also helped me to start developing code for future personal project of mine. Full disclosure: One big motivation to do this was a World Cup bracket challenge that I played with my coworkers. As far as I can tell, I was the only one who did this sort of thing. Did I win the bracket? Read on 😉
+Needless to say, I am a soccer fan*. So this was a fun project which also helped me start developing code for a future personal project.  
+Now, the real reason I did this was a World Cup bracket challenge that I played with my coworkers. As far as I can tell, I was the only one who did this sort of thing. Did I win the bracket? Read on 😉
 
 This simulation is heavily based upon Elo ratings found on <https://eloratings.net> as a measure of relative team strength and to update this team strength measure every time a simulated game is played.
 Code to implement the Elo rating system is based on FiveThirtyEight's NFL forecasting game (<https://github.com/morales-felix/nfl-elo-game>).
@@ -210,4 +211,7 @@ My simulations were predicting that Argentina was the team most likely to win th
 
 Needless to say, seeing Argentina winning was one of the happiest moments in my life.  
 
-BUT I SHOULD HAVE PUT MY MONEY WHERE MY SIMULATIONS WERE AND GET SOME BRAGGING POINTS TOO!!! 😭
+BUT I SHOULD HAVE PUT MY MONEY WHERE MY SIMULATIONS WERE AND GET SOME BRAGGING POINTS TOO!!! 😭  
+
+
+*not too crazy though... As I continue to live on this Earth, I realize that fandom isn't a static thing
