@@ -1,0 +1,17 @@
+match,home_team,away_team,elo_prob_home,result_home,advances,to_match,loses,penalties,stage
+0,Netherlands,United States,,1,Netherlands,8,United States,FALSE,eigths_finals
+1,Argentina,Australia,,1,Argentina,8,Australia,FALSE,eigths_finals
+2,Japan,Croatia,,0.5,Croatia,9,Japan,TRUE,eigths_finals
+3,Brazil,South Korea,,1,Brazil,9,South Korea,FALSE,eigths_finals
+4,England,Senegal,,1,England,10,Senegal,FALSE,eigths_finals
+5,France,Poland,,1,France,10,Poland,FALSE,eigths_finals
+6,Morocco,Spain,,0.5,Morocco,11,Spain,TRUE,eigths_finals
+7,Portugal,Switzerland,,1,Portugal,11,Switzerland,FALSE,eigths_finals
+8,Netherlands,Argentina,,0.5,Argentina,12,Netherlands,TRUE,quarterfinals
+9,Croatia,Brazil,,0.5,Croatia,12,Brazil,TRUE,quarterfinals
+10,England,France,,0,France,13,England,FALSE,quarterfinals
+11,Morocco,Portugal,,1,Morocco,13,Portugal,FALSE,quarterfinals
+12,Argentina,Croatia,,1,Argentina,14,Croatia,FALSE,semifinals
+13,France,Morocco,,1,France,14,Morocco,FALSE,semifinals
+14,Argentina,France,,,,15,,,final
+15,Croatia,Morocco,,,,15,,,third_place
