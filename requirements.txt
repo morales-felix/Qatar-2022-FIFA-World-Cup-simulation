@@ -3,3 +3,5 @@ pandas
 matplotlib
 tqdm
 joblib
+ipykernel
+notebook
