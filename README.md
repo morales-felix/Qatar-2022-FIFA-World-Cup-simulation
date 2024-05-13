@@ -130,33 +130,30 @@ roster[not_sim].sort_values(
 | H           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
 | H           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
 | H           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-
-| G           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| G           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| G           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| G           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-
-| F           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| F           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| F           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| F           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-| E           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| E           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| E           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| E           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-| D           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| D           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| D           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| D           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-| C           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| C           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| C           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| C           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-| B           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| B           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| B           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| B           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-
+| G           | Brazil       | 2169   | 6.1151      | 5.73445   | 6.52030    |
+| G           | Switzerland  | 1902   | 4.2062      | 3.69000   | 4.61535    |
+| G           | Serbia       | 1898   | 2.9597      | 2.56495   | 3.30020    |
+| G           | Cameroon     | 1610   | 2.3326      | 2.05970   | 2.52010    |  
+| F           | Belgium      | 2007   | 6.1354      | 5.60495   | 6.47515    |
+| F           | Croatia      | 1927   | 4.5970      | 4.16465	| 5.04515    |
+| F           | Morocco	     | 1766	  | 2.7974      | 2.41970   | 3.27040    |
+| F           | Canada       | 1776   | 2.5637      | 2.14485	| 3.02010    |  
+| E           | Spain        | 2048   | 5.6514      | 5.20355   | 5.99030    |
+| E           | Germany      | 1936   | 4.2981      | 3.92465   | 4.88505    |
+| E           | Japan        | 1787	  | 4.0986      | 2.81990	| 3.64515    |
+| E           | Costa Rica   | 1743   | 1.5796      | 2.14970	| 2.84565    |  
+| D           | France       | 2005   | 5.3226      | 4.83840	| 5.58515    |
+| D           | Denmark      | 1971   | 4.9913      | 4.63485   | 5.42505    |
+| D           | Australia    | 1719   | 2.7047      | 2.37990   | 3.16080    |
+| D           | Tunisia      | 1707   | 2.7007      | 2.20375   | 3.12565    |  
+| C           | Argentina    | 2143   | 6.8043      | 6.49495   | 7.11525    |
+| C           | Poland       | 1814   | 4.5490      | 3.96960   | 4.98515    |
+| C           | Mexico       | 1809   | 2.9092      | 2.50990   | 3.40505    |
+| C           | Saudi Arabia | 1635   | 1.7660      | 1.49000   | 2.12515    |  
+| B           | England      | 1920   | 5.2230      | 4.65495   | 5.70555    |
+| B           | Wales        | 1790   | 3.7854      | 3.30000   | 4.20000    |
+| B           | Iran         | 1797   | 3.4933      | 3.08475   | 4.11515    |
+| B           | United States| 1798   | 3.4533      | 2.93475   | 3.85515    |
 | A           | Netherlands  | 2040   | 6.1407      | 5.71475   | 6.51505    |
 | A           | Ecuador      | 1833   | 3.7859      | 3.36475   | 4.29565    |
 | A           | Senegal      | 1687   | 3.2100      | 2.65980   | 3.65030    |
@@ -227,48 +224,53 @@ for i in tqdm(range(n)):
     playoff_results_stage.append(overall_result_stage)
 ```
 
+Since I ran 10k simulations, I will now take a look at which results are the most common for Argentina.  
+
 ```python
 results_teams = pd.DataFrame(playoff_results_teams)
 results_teams['Argentina'].value_counts()
 ```
 
-Argentina  
-| Quarterfinals    |  4317  |  
-| Champion         |  2127  |  
-| Third_place      |  1209  |  
-| Round_of_16      |   932  |  
-| Second_place     |   905  |  
-| Fourth_place     |   510  |  
-Name: count, dtype: int64  
+| Argentina        | Simulation count |
+|:-----------------|:-----------------|
+| Quarterfinals    |   4317           |  
+| Champion         |   2127           |  
+| Third_place      |   1209           |  
+| Round_of_16      |    932           |  
+| Second_place     |    905           |  
+| Fourth_place     |    510           | 
+
+I'm not showing this, but very strong teams had very similar simulation counts than Argentina. For weaker teams, the most prevalent outcome was the Round of 16.  
+Now, the real question is which team most frequently won the World Cup across these 10k simulations?  
 
 ```python
 results_stage = pd.DataFrame(playoff_results_stage)
 results_stage['Champion'].value_counts()
 ```
 
-Champion
-Argentina     |  2127  
-Brazil        |  1860  
-Netherlands   |  1547  
-France        |   859  
-England       |   787  
-Portugal      |   627  
-Spain         |   555  
-Croatia       |   454  
-Switzerland   |   283  
-Japan         |   231  
-Morocco       |   218  
-United States |   208  
-Poland        |    88  
-Senegal       |    78  
-Australia     |    46  
-South Korea   |    32
-Name: count, dtype: int64
+| Team          | Champion count |
+|:--------------|:---------------|
+| Argentina     |  2127          |
+| Brazil        |  1860          |
+| Netherlands   |  1547          |
+| France        |   859          |
+| England       |   787          |
+| Portugal      |   627          |
+| Spain         |   555          |
+| Croatia       |   454          |
+| Switzerland   |   283          |
+| Japan         |   231          |
+| Morocco       |   218          |
+| United States |   208          |
+| Poland        |    88          |
+| Senegal       |    78          |
+| Australia     |    46          |
+| South Korea   |    32          |
 
 ### LEARNINGS  
 
-My simulations were predicting that Argentina was the team most likely to win the World Cup right at the end of the group stage/start of the knockout stage. But it so happens that I root for Argentina since my pre-teen years, and I've been conditioned to so much disappointment that I just couldn't bring myself to believe Argentina could win this World Cup. Especially after that defeat against Saudi Arabia. So I ended up not following these results when filling out my bracket...  
+My simulations were predicting that Argentina was the team most likely to win the World Cup right at the end of the group stage/start of the knockout stage. But it so happens that I root for Argentina since my pre-teen years, and I've been conditioned to so much disappointment that I just couldn'tbelieve Argentina could win this World Cup. Especially after that defeat against Saudi Arabia. So I ended up not following these results when filling out my bracket...  
 
-Needless to say, seeing Argentina winning was one of the happiest moments in my life.  
+Needless to say, seeing Argentina winning was one of the happiest moments in my life (next to my country, Panama, qualifying for the World Cup in 2018).  
 
 BUT I SHOULD HAVE PUT MY MONEY WHERE MY SIMULATIONS WERE AND GET SOME BRAGGING POINTS TOO!!! 😭
