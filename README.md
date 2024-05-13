@@ -1,11 +1,10 @@
-# Data Scientist - Project Portfolio
+# [Data Scientist - Project Portfolio](https://morales-felix.github.io/)
 
 ## Simulating the Qatar 2022 FIFA World Cup
 
-> Want to actually play with the Jupyter notebook? Click [here](https://github.com/morales-felix/Qatar-2022-FIFA-World-Cup-simulation/tree/master) to clone the repository and run the notebook on your local machine.
+> Want to actually play with the Jupyter notebook? Click [here](https://github.com/morales-felix/Qatar-2022-FIFA-World-Cup-simulation/tree/master) to clone the repository and run the notebook on your local machine. Otherwise, you can click on the link below my picture.
 
-Needless to say, I am a soccer fan*. So this was a fun project which also helped me start developing code for a future personal project.  
-Now, the real reason I did this was a World Cup bracket challenge that I played with my coworkers. As far as I can tell, I was the only one who did this sort of thing. Did I win the bracket? Read on 😉
+Needless to say, I am a soccer fan*. So this was a fun project which also helped me start developing code for a future personal project. Now, the real reason I did this was a World Cup bracket challenge that I played with my coworkers. As far as I can tell, I was the only one who did this sort of thing. Did I win the bracket? Read on 😉
 
 This simulation is heavily based upon Elo ratings found on <https://eloratings.net> as a measure of relative team strength and to update this team strength measure every time a simulated game is played.
 Code to implement the Elo rating system is based on FiveThirtyEight's NFL forecasting game (<https://github.com/morales-felix/nfl-elo-game>).
@@ -17,6 +16,8 @@ Notes on Elo implementation:
 - I did not simulate scorelines. Rather, I simply used probabilities to decide whether a team would win, tie, or lose. As such, I did not use the goal difference multiplier specified in <https://eloratings.net/about>  
 - I'll be happy to talk about the workaround, but I wouldn't take it as gospel. There might be ways to do this, but I did not research it. Wanted to have fun, not produce an academic-paper-worthy method, nor a sellable product.  
 - In the end, results aren't that different from other more publicized methods. Brazil is a strong team... always.  
+
+*Not too crazy though... As I continue to live on this Earth, I realize that fandom isn't a static thing.
 
 ### Import libraries
 
@@ -46,13 +47,23 @@ def run_group_stage_simulation(n, j):
         teams = {}
     
         for row in [item for item in csv.DictReader(open("data/roster.csv"))]:
-            teams[row['team']] = {'name': row['team'], 'rating': float(row['rating']), 'points': 0}
+            teams[row['team']] = {
+                'name': row['team'],
+                'rating': float(row['rating']),
+                'points': 0
+                }
     
-        simulate_group_stage(games, teams, ternary=True)
+        simulate_group_stage(
+            games,
+            teams,
+            ternary=True
+            )
     
         collector = []
         for key in teams.keys():
-            collector.append({"team": key, f"simulation{i+1}": teams[key]['points']})
+            collector.append(
+                {"team": key,
+                f"simulation{i+1}": teams[key]['points']})
 
         temp = pd.DataFrame(collector)
         teams_pd = pd.merge(teams_pd, temp)
@@ -73,13 +84,21 @@ The gist is to read from two files: One defining the match schedule, the other w
 n = 100 # How many simulations to run
 m = 100 # How many simulation results to collect
 
-roster_pd = Parallel(n_jobs=5)(delayed(run_group_stage_simulation)(n, j) for j in tqdm(range(m)))
+roster_pd = Parallel(n_jobs=5)(
+    delayed(run_group_stage_simulation)(n, j) for j in tqdm(range(m))
+    )
 
 for t in tqdm(range(m)):
     if t == 0:
-        roster = pd.merge(roster_pd[t], roster_pd[t+1])
+        roster = pd.merge(
+            roster_pd[t],
+            roster_pd[t+1]
+            )
     elif t >= 2:
-        roster = pd.merge(roster, roster_pd[t])
+        roster = pd.merge(
+            roster,
+            roster_pd[t]
+            )
     else:
         pass
 
@@ -96,7 +115,13 @@ not_sim = [j for j in roster.columns if "avg_pts" not in j]
 Simulation is done, now take a look at the results from the group stage.
 
 ```python
-roster[not_sim].sort_values(by=['group', 'avg_sim_pts'], ascending=False)
+roster[not_sim].sort_values(
+    by=[
+        'group',
+        'avg_sim_pts'
+        ],
+    ascending=False
+    )
 ```
 
 | group       | team         | rating | avg_sim_pts | 99%CI_low | 99%CI_high |
@@ -105,6 +130,36 @@ roster[not_sim].sort_values(by=['group', 'avg_sim_pts'], ascending=False)
 | H           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
 | H           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
 | H           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+|:------------|:-------------|:-------|:------------|:----------|:-----------|
+| G           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| G           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| G           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| G           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+|:------------|:-------------|:-------|:------------|:----------|:-----------|
+| F           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| F           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| F           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| F           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+| E           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| E           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| E           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| E           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+| D           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| D           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| D           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| D           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+| C           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| C           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| C           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| C           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+| B           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| B           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| B           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| B           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+| A           | Netherlands  | 2040   | 6.1407      | 5.71475   | 6.51505    |
+| A           | Ecuador      | 1833   | 3.7859      | 3.36475   | 4.29565    |
+| A           | Senegal      | 1687   | 3.2100      | 2.65980   | 3.65030    |
+| A           | Qatar        | 1680   | 2.6475      | 2.24495	| 3.01000    |
 
 You can see that:  
 
@@ -135,7 +190,10 @@ for i in tqdm(range(n)):
     teams = {}
     
     for row in [item for item in csv.DictReader(open("data/playoff_roster.csv"))]:
-        teams[row['team']] = {'name': row['team'], 'rating': float(row['rating'])}
+        teams[row['team']] = {
+            'name': row['team'],
+            'rating': float(row['rating'])
+            }
     
     simulate_playoffs(games, teams, ternary=True)
     
@@ -174,12 +232,12 @@ results_teams['Argentina'].value_counts()
 ```
 
 Argentina  
-Quarterfinals    4317  
-Champion         2127  
-Third_place      1209  
-Round_of_16       932  
-Second_place      905  
-Fourth_place      510  
+Quarterfinals |  4317  
+Champion      |  2127  
+Third_place   |  1209  
+Round_of_16   |   932  
+Second_place  |   905  
+Fourth_place  |   510  
 Name: count, dtype: int64  
 
 ```python
@@ -187,31 +245,29 @@ results_stage = pd.DataFrame(playoff_results_stage)
 results_stage['Champion'].value_counts()
 ```
 
-Champion 
-Argentina        2127  
-Brazil           1860  
-Netherlands      1547  
-France            859  
-England           787  
-Portugal          627
-Spain             555
-Croatia           454
-Switzerland       283
-Japan             231
-Morocco           218
-United States     208
-Poland             88
-Senegal            78
-Australia          46
-South Korea        32
+Champion
+Argentina     |  2127  
+Brazil        |  1860  
+Netherlands   |  1547  
+France        |   859  
+England       |   787  
+Portugal      |   627  
+Spain         |   555  
+Croatia       |   454  
+Switzerland   |   283  
+Japan         |   231  
+Morocco       |   218  
+United States |   208  
+Poland        |    88  
+Senegal       |    78  
+Australia     |    46  
+South Korea   |    32
 Name: count, dtype: int64
 
 ### LEARNINGS  
+
 My simulations were predicting that Argentina was the team most likely to win the World Cup right at the end of the group stage/start of the knockout stage. But it so happens that I root for Argentina since my pre-teen years, and I've been conditioned to so much disappointment that I just couldn't bring myself to believe Argentina could win this World Cup. Especially after that defeat against Saudi Arabia. So I ended up not following these results when filling out my bracket...  
 
 Needless to say, seeing Argentina winning was one of the happiest moments in my life.  
 
-BUT I SHOULD HAVE PUT MY MONEY WHERE MY SIMULATIONS WERE AND GET SOME BRAGGING POINTS TOO!!! 😭  
-
-
-*not too crazy though... As I continue to live on this Earth, I realize that fandom isn't a static thing
+BUT I SHOULD HAVE PUT MY MONEY WHERE MY SIMULATIONS WERE AND GET SOME BRAGGING POINTS TOO!!! 😭
