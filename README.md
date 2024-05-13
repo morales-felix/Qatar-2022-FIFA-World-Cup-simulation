@@ -130,12 +130,12 @@ roster[not_sim].sort_values(
 | H           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
 | H           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
 | H           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-|:------------|:-------------|:-------|:------------|:----------|:-----------|
+
 | G           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
 | G           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
 | G           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
 | G           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-|:------------|:-------------|:-------|:------------|:----------|:-----------|
+
 | F           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
 | F           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
 | F           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
@@ -156,6 +156,7 @@ roster[not_sim].sort_values(
 | B           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
 | B           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
 | B           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
+
 | A           | Netherlands  | 2040   | 6.1407      | 5.71475   | 6.51505    |
 | A           | Ecuador      | 1833   | 3.7859      | 3.36475   | 4.29565    |
 | A           | Senegal      | 1687   | 3.2100      | 2.65980   | 3.65030    |
@@ -232,12 +233,12 @@ results_teams['Argentina'].value_counts()
 ```
 
 Argentina  
-Quarterfinals |  4317  
-Champion      |  2127  
-Third_place   |  1209  
-Round_of_16   |   932  
-Second_place  |   905  
-Fourth_place  |   510  
+| Quarterfinals    |  4317  |  
+| Champion         |  2127  |  
+| Third_place      |  1209  |  
+| Round_of_16      |   932  |  
+| Second_place     |   905  |  
+| Fourth_place     |   510  |  
 Name: count, dtype: int64  
 
 ```python
