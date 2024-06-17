@@ -46,7 +46,9 @@ def run_group_stage_simulation(n, j):
         games = read_games("data/matches.csv")
         teams = {}
     
-        for row in [item for item in csv.DictReader(open("data/roster.csv"))]:
+        for row in [
+            item for item in csv.DictReader(open("data/roster.csv"))
+            ]:
             teams[row['team']] = {
                 'name': row['team'],
                 'rating': float(row['rating']),
@@ -63,14 +65,19 @@ def run_group_stage_simulation(n, j):
         for key in teams.keys():
             collector.append(
                 {"team": key,
-                f"simulation{i+1}": teams[key]['points']})
+                f"simulation{i+1}": teams[key]['points']}
+            )
 
         temp = pd.DataFrame(collector)
         teams_pd = pd.merge(teams_pd, temp)
     
-    sim_cols = [a for a in teams_pd.columns if "simulation" in a]
-    teams_pd[f"avg_pts_{j+1}"] = teams_pd[sim_cols].mean(axis=1)
-    not_sim = [b for b in teams_pd.columns if "simulation" not in b]
+    sim_cols = [
+        a for a in teams_pd.columns if "simulation" in a]
+    teams_pd[
+        f"avg_pts_{j+1}"
+        ] = teams_pd[sim_cols].mean(axis=1)
+    not_sim = [
+        b for b in teams_pd.columns if "simulation" not in b]
     simulation_result = teams_pd[not_sim]
     
     return simulation_result
@@ -85,8 +92,8 @@ n = 100 # How many simulations to run
 m = 100 # How many simulation results to collect
 
 roster_pd = Parallel(n_jobs=5)(
-    delayed(run_group_stage_simulation)(n, j) for j in tqdm(range(m))
-    )
+    delayed(run_group_stage_simulation)(
+        n, j) for j in tqdm(range(m)))
 
 for t in tqdm(range(m)):
     if t == 0:
@@ -105,11 +112,14 @@ for t in tqdm(range(m)):
 sim_cols = [i for i in roster.columns if "avg_pts" in i]
 
 roster['avg_sim_pts'] = roster[sim_cols].mean(axis=1)
-roster['99%CI_low'] = roster[sim_cols].quantile(q=0.005, axis=1)
-roster['99%CI_high'] = roster[sim_cols].quantile(q=0.995, axis=1)
+roster['99%CI_low'] = roster[sim_cols] \
+    .quantile(q=0.005, axis=1)
+roster['99%CI_high'] = roster[sim_cols] \
+    .quantile(q=0.995, axis=1)
 
 
-not_sim = [j for j in roster.columns if "avg_pts" not in j]
+not_sim = [
+    j for j in roster.columns if "avg_pts" not in j]
 ```
 
 Simulation is done, now take a look at the results from the group stage.
@@ -187,7 +197,8 @@ for i in tqdm(range(n)):
     games = read_games("data/playoff_matches.csv")
     teams = {}
     
-    for row in [item for item in csv.DictReader(open("data/playoff_roster.csv"))]:
+    for row in [
+        item for item in csv.DictReader(open("data/playoff_roster.csv"))]:
         teams[row['team']] = {
             'name': row['team'],
             'rating': float(row['rating'])
@@ -199,7 +210,10 @@ for i in tqdm(range(n)):
     
     # This is for collecting results of simulations per team
     for key in teams.keys():
-        overall_result_teams[key] = collect_playoff_results(key, playoff_pd)
+        overall_result_teams[key] = collect_playoff_results(
+            key,
+            playoff_pd
+            )
     playoff_results_teams.append(overall_result_teams)
     
     # Now, collecting results from stage-perspective
