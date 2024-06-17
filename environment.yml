@@ -1,0 +1,13 @@
+name: world_cup
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - matlplotlib
+  - tqdm
+  - joblib
+  - ipykernel
+  - notebook
+prefix: C:\Users\felix\anaconda3\envs\world_cup
