@@ -2,22 +2,19 @@
 
 ## Simulating the Qatar 2022 FIFA World Cup
 
-> Want to actually play with the Jupyter notebook? Click [here](https://github.com/morales-felix/Qatar-2022-FIFA-World-Cup-simulation/tree/master) to clone the repository and run the notebook on your local machine. Otherwise, you can click on the link below my picture.
+> Want to explore the Jupyter notebook? Click [here](https://github.com/morales-felix/Qatar-2022-FIFA-World-Cup-simulation/tree/master) to clone the repository and run it locally. Or, click the link below my picture.
 
-Needless to say, I am a soccer fan*. So this was a fun project which also helped me start developing code for a future personal project. Now, the real reason I did this was a World Cup bracket challenge that I played with my coworkers. As far as I can tell, I was the only one who did this sort of thing. Did I win the bracket? Read on 😉
+As a soccer fan, this project was both fun and a step towards a future personal project. The real reason for this simulation was a World Cup bracket challenge with my coworkers. Was I the only one who did this? Did I win? Read on 😉
 
-This simulation is heavily based upon Elo ratings found on <https://eloratings.net> as a measure of relative team strength and to update this team strength measure every time a simulated game is played.
-Code to implement the Elo rating system is based on FiveThirtyEight's NFL forecasting game (<https://github.com/morales-felix/nfl-elo-game>).
+This simulation uses Elo ratings from <https://eloratings.net> to measure team strength and update it after each simulated game. The Elo implementation is based on FiveThirtyEight's NFL forecasting game (<https://github.com/morales-felix/nfl-elo-game>).
 
-Notes on Elo implementation:  
+### Notes on Elo implementation  
 
 - Per <https://eloratings.net/about>, the K constant is set to 60 as this is a World Cup competition.  
-- Probabilities given by the Elo rating system are binary. I came up with a workaround to convert them to ternary probabilities given that association football (a.k.a. soccer) admits three outcomes after a match (win, tie, lose).  
-- I did not simulate scorelines. Rather, I simply used probabilities to decide whether a team would win, tie, or lose. As such, I did not use the goal difference multiplier specified in <https://eloratings.net/about>  
-- I'll be happy to talk about the workaround, but I wouldn't take it as gospel. There might be ways to do this, but I did not research it. Wanted to have fun, not produce an academic-paper-worthy method, nor a sellable product.  
-- In the end, results aren't that different from other more publicized methods. Brazil is a strong team... always.  
-
-*Not too crazy though... As I continue to live on this Earth, I realize that fandom isn't a static thing.
+- Probabilities given by the Elo rating system are binary. I came up with a workaround to convert them to ternary probabilities since association football (a.k.a. soccer) admits three outcomes after a match (win, tie, lose).  
+- I did not simulate scorelines. Rather, I used probabilities just to determine the outcome of a match. As such, I did not use the goal difference multiplier specified in <https://eloratings.net/about>  
+- I'll be happy to talk about the workaround for ternary probabilities, but I wouldn't take it as gospel. There might be ways to do this, but I did not research it. Wanted to have fun, not produce an academic-paper-worthy method, nor a sellable product.  
+- In the end, results aligned with other more publicized methods. Brazil is a strong team... always.  
 
 ### Import libraries
 
@@ -31,6 +28,7 @@ from joblib import Parallel, delayed
 from src.world_cup_simulator import *
 ```
 
+### Group Stage Simulation  
 Since I want to simulate the group stage many times to generate a distribution of outcomes, I will use the `joblib` module to parallelize the simulation. This will allow me to run the simulation many times in a reasonable amount of time. That requires me to use a function to simulate the group stage and return the results.  
 
 ```python
@@ -83,7 +81,7 @@ def run_group_stage_simulation(n, j):
     return simulation_result
 ```
 
-### Simulate the group stage  
+### Run Group Stage Simulations 
 The gist is to read from two files: One defining the match schedule, the other with teams and their relative strengths (given by Elo ratings prior to the start of the event).
 
 ```python
@@ -122,7 +120,7 @@ not_sim = [
     j for j in roster.columns if "avg_pts" not in j]
 ```
 
-Simulation is done, now take a look at the results from the group stage.
+### Group Stage Results
 
 ```python
 roster[not_sim].sort_values(
@@ -136,43 +134,43 @@ roster[not_sim].sort_values(
 
 | group       | team         | rating | avg_sim_pts | 99%CI_low | 99%CI_high |
 |:------------|:-------------|:-------|:------------|:----------|:-----------|
-| H           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
-| H           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
-| H           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
-| H           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
-| G           | Brazil       | 2169   | 6.1151      | 5.73445   | 6.52030    |
-| G           | Switzerland  | 1902   | 4.2062      | 3.69000   | 4.61535    |
-| G           | Serbia       | 1898   | 2.9597      | 2.56495   | 3.30020    |
-| G           | Cameroon     | 1610   | 2.3326      | 2.05970   | 2.52010    |  
-| F           | Belgium      | 2007   | 6.1354      | 5.60495   | 6.47515    |
-| F           | Croatia      | 1927   | 4.5970      | 4.16465	| 5.04515    |
-| F           | Morocco	     | 1766	  | 2.7974      | 2.41970   | 3.27040    |
-| F           | Canada       | 1776   | 2.5637      | 2.14485	| 3.02010    |  
-| E           | Spain        | 2048   | 5.6514      | 5.20355   | 5.99030    |
-| E           | Germany      | 1936   | 4.2981      | 3.92465   | 4.88505    |
-| E           | Japan        | 1787	  | 4.0986      | 2.81990	| 3.64515    |
-| E           | Costa Rica   | 1743   | 1.5796      | 2.14970	| 2.84565    |  
-| D           | France       | 2005   | 5.3226      | 4.83840	| 5.58515    |
-| D           | Denmark      | 1971   | 4.9913      | 4.63485   | 5.42505    |
-| D           | Australia    | 1719   | 2.7047      | 2.37990   | 3.16080    |
-| D           | Tunisia      | 1707   | 2.7007      | 2.20375   | 3.12565    |  
-| C           | Argentina    | 2143   | 6.8043      | 6.49495   | 7.11525    |
-| C           | Poland       | 1814   | 4.5490      | 3.96960   | 4.98515    |
-| C           | Mexico       | 1809   | 2.9092      | 2.50990   | 3.40505    |
-| C           | Saudi Arabia | 1635   | 1.7660      | 1.49000   | 2.12515    |  
-| B           | England      | 1920   | 5.2230      | 4.65495   | 5.70555    |
-| B           | Wales        | 1790   | 3.7854      | 3.30000   | 4.20000    |
-| B           | Iran         | 1797   | 3.4933      | 3.08475   | 4.11515    |
-| B           | United States| 1798   | 3.4533      | 2.93475   | 3.85515    |
 | A           | Netherlands  | 2040   | 6.1407      | 5.71475   | 6.51505    |
 | A           | Ecuador      | 1833   | 3.7859      | 3.36475   | 4.29565    |
 | A           | Senegal      | 1687   | 3.2100      | 2.65980   | 3.65030    |
 | A           | Qatar        | 1680   | 2.6475      | 2.24495	| 3.01000    |
+| B           | England      | 1920   | 5.2230      | 4.65495   | 5.70555    |
+| B           | Wales        | 1790   | 3.7854      | 3.30000   | 4.20000    |
+| B           | Iran         | 1797   | 3.4933      | 3.08475   | 4.11515    |
+| B           | United States| 1798   | 3.4533      | 2.93475   | 3.85515    |
+| C           | Argentina    | 2143   | 6.8043      | 6.49495   | 7.11525    |
+| C           | Poland       | 1814   | 4.5490      | 3.96960   | 4.98515    |
+| C           | Mexico       | 1809   | 2.9092      | 2.50990   | 3.40505    |
+| C           | Saudi Arabia | 1635   | 1.7660      | 1.49000   | 2.12515    |
+| D           | France       | 2005   | 5.3226      | 4.83840	| 5.58515    |
+| D           | Denmark      | 1971   | 4.9913      | 4.63485   | 5.42505    |
+| D           | Australia    | 1719   | 2.7047      | 2.37990   | 3.16080    |
+| D           | Tunisia      | 1707   | 2.7007      | 2.20375   | 3.12565    |
+| E           | Spain        | 2048   | 5.6514      | 5.20355   | 5.99030    |
+| E           | Germany      | 1936   | 4.2981      | 3.92465   | 4.88505    |
+| E           | Japan        | 1787	  | 4.0986      | 2.81990	| 3.64515    |
+| E           | Costa Rica   | 1743   | 1.5796      | 2.14970	| 2.84565    |
+| F           | Belgium      | 2007   | 6.1354      | 5.60495   | 6.47515    |
+| F           | Croatia      | 1927   | 4.5970      | 4.16465	| 5.04515    |
+| F           | Morocco	     | 1766	  | 2.7974      | 2.41970   | 3.27040    |
+| F           | Canada       | 1776   | 2.5637      | 2.14485	| 3.02010    |
+| G           | Brazil       | 2169   | 6.1151      | 5.73445   | 6.52030    |
+| G           | Switzerland  | 1902   | 4.2062      | 3.69000   | 4.61535    |
+| G           | Serbia       | 1898   | 2.9597      | 2.56495   | 3.30020    |
+| G           | Cameroon     | 1610   | 2.3326      | 2.05970   | 2.52010    | 
+| H           | Portugal     | 2006   | 5.8483      | 5.43495   | 6.32020    |
+| H           | Uruguay      | 1936   | 4.2981      | 3.81435   | 4.74545    |
+| H           | South Korea  | 1786   | 4.0986      | 3.66465   | 4.49030    |
+| H           | Ghana        | 1567   | 1.5796      | 1.37990   | 1.84515    |
 
 You can see that:  
 
 - Group A was a bit of a disappointment for me, as Ecuador and Senegal ended up flipping places. I expected more from Ecuador considering the 99% confidence interval for the points they would get.  
-- Group B was a very uncertain group, given how tight the lower three teams end up in the simulation. This corresponded with reality, as the group was decided on the last match date, with the United States ultimately ending second place.  
+- Group B was a very uncertain group, given how tight the lower three teams ended up in the simulation. This corresponded with reality, as the group was decided on the last match date, with the United States ultimately ending second place.  
 - Group C happened exactly as I expected.  
 - Group D was a surprise with Denmark and Australia flipping places.  
 - Group E and F were a disaster in the prediction department... But great thing that Morocco served as the surprise team in this World Cup.  
@@ -254,8 +252,10 @@ results_teams['Argentina'].value_counts()
 | Second_place     |    905           |  
 | Fourth_place     |    510           | 
 
-I'm not showing this, but very strong teams had very similar simulation counts than Argentina. For weaker teams, the most prevalent outcome was the Round of 16.  
-Now, the real question is which team most frequently won the World Cup across these 10k simulations?  
+I'm not showing this, but very strong teams had similar simulation counts than Argentina. For weaker teams, the most prevalent outcome was being eliminated in the Round of 16 (which makes sense).  
+Now, the real question is:  
+
+### **Which team most frequently won the World Cup across these 10k simulations?**  
 
 ```python
 results_stage = pd.DataFrame(playoff_results_stage)
@@ -283,8 +283,10 @@ results_stage['Champion'].value_counts()
 
 ### LEARNINGS  
 
-My simulations were predicting that Argentina was the team most likely to win the World Cup right at the end of the group stage/start of the knockout stage. But it so happens that I root for Argentina since my pre-teen years, and I've been conditioned to so much disappointment that I just couldn'tbelieve Argentina could win this World Cup. Especially after that defeat against Saudi Arabia. So I ended up not following these results when filling out my bracket...  
+My simulations predicted Argentina as the most likely World Cup winner after the group stage was completed.  
+
+But it so happens that I root for Argentina since my pre-teen years, and I've been conditioned to so much disappointment that I just couldn't believe Argentina could win this World Cup. Especially after that defeat against Saudi Arabia. So I ended up not following these results when filling out my bracket.  
 
 Needless to say, seeing Argentina winning was one of the happiest moments in my life (next to my country, Panama, qualifying for the World Cup in 2018).  
 
-BUT I SHOULD HAVE PUT MY MONEY WHERE MY SIMULATIONS WERE AND GET SOME BRAGGING POINTS TOO!!! 😭
+**Lesson learned:** I should have trusted my simulations and gained some bragging rights with the Bracket challenge! 😭
