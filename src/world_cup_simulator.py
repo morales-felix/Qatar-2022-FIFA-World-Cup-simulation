@@ -1,15 +1,13 @@
-import csv
 import math
 import random
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 
 
 def read_games(file):
     """
     Initializes game objects from csv
     """
+    
+    import csv
 
     games = [item for item in csv.DictReader(open(file, encoding="latin-1"))]
 
@@ -70,6 +68,8 @@ def simulate_playoff_game(game, ternary=True):
     """
     Simulates a single game in the knockout stage
     """
+    
+    import numpy as np
 
     home = game["elo_prob_home"]
     away = 1 - game["elo_prob_home"]
