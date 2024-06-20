@@ -181,9 +181,6 @@ You can see that:
 Here is where the fun begins.  
 
 ```python
-playoff_games_pd = pd.read_csv("data/playoff_matches.csv")
-playoff_teams_pd = pd.read_csv("data/playoff_roster.csv")
-
 # Now, doing the Monte Carlo simulations
 n = 10000
 playoff_results_teams = []
